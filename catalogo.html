@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo completo — Atelier Eitner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Nunito+Sans:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="logos/favicon.ico">
+<link rel="stylesheet" href="proyectt.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <a href="index.html" aria-label="Volver al inicio" title="Volver al inicio">
+      <img src="logos/LOGO.png" alt="Logo" class="header-logo">
+    </a>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav id="navMenu">
+    <div class="nav-dropdown" id="productsDropdown">
+      <button class="nav-dropdown-trigger" id="productsTrigger" aria-expanded="false">
+        Productos <span class="chev"></span>
+      </button>
+      <div class="nav-dropdown-panel">
+        <a href="catalogo.html?cat=mesas-candybar">Mesas y muebles</a>
+        <a href="catalogo.html?cat=estanterias-exhibidores">Estanterías y Exhibidores</a>
+        <a href="catalogo.html?cat=fondos-paneles">Fondos y Paneles</a>
+        <a href="catalogo.html?cat=letras-luminosas">Deco Luminosa</a>
+        <div class="dropdown-divider"></div>
+        <a href="catalogo.html" class="see-all">Ver todos los productos</a>
+      </div>
+    </div>
+    <a href="index.html#colecciones">Colecciones</a>
+    <a href="index.html#contacto" class="nav-cta">Pedir presupuesto</a>
+  </nav>
+</header>
+
+<section class="catalog-hero fade-up">
+  <div class="blob-bg"></div>
+  <div class="breadcrumb"><a href="index.html">Inicio</a> / <span>Catálogo</span></div>
+  <h1>Todo lo que hemos creado<br><span class="accent">y esto recién comienza</span></h1>
+  <p class="lede">Explorá nuestra colección de piezas realizadas hasta hoy. El catálogo que crece con cada proyecto nuevo.</p>
+</section> 
+
+<section id="catalogo" class="centered fade-up">
+  <div class="product-filters">
+    <button class="filter-btn active" data-category="all">Todos</button>
+    <button class="filter-btn" data-category="mesas-candybar">Mesas y muebles</button>
+    <button class="filter-btn" data-category="estanterias-exhibidores">Estanterías y Exhibidores</button>
+    <button class="filter-btn" data-category="fondos-paneles">Fondos y Paneles</button>
+    <button class="filter-btn" data-category="letras-luminosas">Letras y Deco Luminosa</button>
+  </div>
+
+  <p class="catalog-count" id="catalogCount"></p>
+
+  <div class="cards cards-3 cards-pairs" id="catalogGrid" style="opacity: 0;">
+    <!-- Se carga dinámicamente desde JS -->
+  </div>
+
+  <p class="catalog-empty" id="catalogEmpty">Todavía no tenemos productos cargados en esta categoría.</p>
+</section>
+
+<section id="contacto" class="fade-up">
+  <div class="cta">
+    <div class="blob-bg"></div>
+    <div class="cta-inner">
+      <span class="eyebrow-txt">¿Encontraste lo que buscabas?</span>
+      <h2 style="margin-top:14px;">Contanos tu idea y lo hacemos realidad</h2>
+      <p>Cada pieza se adapta a la temática y paleta de tu evento.</p>
+      <div class="cta-row">
+        <a href="https://wa.me/5493765229332?text=Hola!%20Quería%20consultar%20por%20sus%20productos" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Pedir presupuesto</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo"><img src="logos/LOGO.png" alt="Logo" class="footer-logo"></div>
+  <div class="foot-links">
+    <a href="#"><img src="logos/instagram.png" alt="Instagram" class="social-icon"></a>
+    <a href="https://wa.me/5493765229332?text=Hola!%20Quería%20consultar%20por%20sus%20productos" target="_blank" rel="noopener noreferrer">
+      <img src="logos/whatsapp.png" alt="WhatsApp" class="social-icon"></a>
+    <a href="#"><img src="logos/tiktok.png" alt="TikTok" class="social-icon"></a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Posadas,+Misiones" target="_blank" rel="noopener noreferrer">
+      <img src="logos/map_418760.png" alt="Map" class="social-icon"> Posadas, Misiones
+    </a>
+  </div>
+</footer>
+
+<!-- Lightbox Modal -->
+<div id="lightboxModal" class="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <button class="lightbox-prev">&#10094;</button>
+  <div class="lightbox-content">
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption">
+      <h3 id="lightboxTitle"></h3>
+      <p id="lightboxDesc"></p>
+    </div>
+  </div>
+  <button class="lightbox-next">&#10095;</button>
+</div>
+
+<script src="nav.js"></script>
+<script src="catalogo.js"></script>
+</body>
+</html>
