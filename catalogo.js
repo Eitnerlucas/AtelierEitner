@@ -1,21 +1,21 @@
 const itemsCatalogo = [
-  { id: 1, src: 'catalogo/LOVE luminoso.png', category: 'letras-luminosas', title: 'Letras LOVE Luminosas', desc: 'Iniciales gigantes de madera con luces cálidas.' },
-  { id: 2, src: 'catalogo/SET-safari.png', category: 'fondos-paneles', title: 'Set Safari', desc: 'Fondo y paneles temáticos decorativos de selva.' },
-  { id: 3, src: 'catalogo/SET_cincuenta-anos.png', category: 'fondos-paneles', title: 'Set Cincuenta Años', desc: 'Decoración de fondos y paneles para cumpleaños número 50.' },
-  { id: 4, src: 'catalogo/SET_fondoluces.png', category: 'fondos-paneles', title: 'Set Fondos con Luces', desc: 'Paneles decorados con hermosas guirnaldas de luces cálidas.' },
-  { id: 5, src: 'catalogo/TRINI luminoso.png', category: 'letras-luminosas', title: 'Nombre TRINI Luminoso', desc: 'Cartel de nombre personalizado calado y retroiluminado.' },
-  { id: 6, src: 'catalogo/arcos y paneles (2).png', category: 'fondos-paneles', title: 'Set de Arcos y Paneles Modernos', desc: 'Paneles arqueados y curvos superpuestos para fondo.' },
-  { id: 7, src: 'catalogo/arcos y paneles.png', category: 'fondos-paneles', title: 'Arcos y Paneles de Fondo', desc: 'Estructuras modulares con diseño de arco.' },
-  { id: 8, src: 'catalogo/bobesponja.png', category: 'fondos-paneles', title: 'Panel Bob Esponja', desc: 'Decoración de fondo temática de Bob Esponja.' },
-  { id: 9, src: 'catalogo/caja de madera a medida.png', category: 'mesas-candybar', title: 'Caja de Madera a Medida', desc: 'Cajón de madera resistente para candy bar y golosinas.' },
-  { id: 10, src: 'catalogo/estanteria bob esponja.png', category: 'estanterias-exhibidores', title: 'Estantería Piña Bob Esponja', desc: 'Estantería exhibidora temática de la casa piña de Bob Esponja.' },
-  { id: 11, src: 'catalogo/estanterias y exhibidores (3).png', category: 'estanterias-exhibidores', title: 'Exhibidor Escalonado', desc: 'Exhibidor en escalera de tres niveles para postres o souvenirs.' },
-  { id: 12, src: 'catalogo/estanterias y exhibidores.png', category: 'estanterias-exhibidores', title: 'Estantería de Exhibición', desc: 'Mueble rústico con estantes para candy bar.' },
-  { id: 13, src: 'catalogo/fondos y paneles (2).png', category: 'fondos-paneles', title: 'Paneles de Madera Rústicos', desc: 'Paredes decorativas modulares de madera.' },
-  { id: 14, src: 'catalogo/fondos y paneles (3).png', category: 'fondos-paneles', title: 'Panel de Fondo Curvo', desc: 'Estructura modular curada para sesiones fotográficas y eventos.' },
-  { id: 15, src: 'catalogo/letras-luminosas (3).png', category: 'letras-luminosas', title: 'Letras y Números Luminosos', desc: 'Deco de madera luminosa personalizada con lámparas cálidas.' },
-  { id: 16, src: 'catalogo/mueble-caja de madera.png', category: 'mesas-candybar', title: 'Mueble Caja de Madera', desc: 'Mueble de madera tipo cajón de apoyo y exhibición.' },
-  { id: 17, src: 'catalogo/paneles de mariposa.png', category: 'fondos-paneles', title: 'Paneles Mariposa', desc: 'Fondo calado con formas y siluetas de mariposas.' }
+  { id: 1, src: 'catalogo/LOVE luminoso.webp', category: 'letras-luminosas', title: 'Letras LOVE Luminosas', desc: 'Iniciales gigantes de madera con luces cálidas.' },
+  { id: 2, src: 'catalogo/SET-safari.webp', category: 'fondos-paneles', title: 'Set Safari', desc: 'Fondo y paneles temáticos decorativos de selva.' },
+  { id: 3, src: 'catalogo/SET_cincuenta-anos.webp', category: 'fondos-paneles', title: 'Set Cincuenta Años', desc: 'Decoración de fondos y paneles para cumpleaños número 50.' },
+  { id: 4, src: 'catalogo/SET_fondoluces.webp', category: 'fondos-paneles', title: 'Set Fondos con Luces', desc: 'Paneles decorados con hermosas guirnaldas de luces cálidas.' },
+  { id: 5, src: 'catalogo/TRINI luminoso.webp', category: 'letras-luminosas', title: 'Nombre TRINI Luminoso', desc: 'Cartel de nombre personalizado calado y retroiluminado.' },
+  { id: 6, src: 'catalogo/arcos y paneles (2).webp', category: 'fondos-paneles', title: 'Set de Arcos y Paneles Modernos', desc: 'Paneles arqueados y curvos superpuestos para fondo.' },
+  { id: 7, src: 'catalogo/arcos y paneles.webp', category: 'fondos-paneles', title: 'Arcos y Paneles de Fondo', desc: 'Estructuras modulares con diseño de arco.' },
+  { id: 8, src: 'catalogo/bobesponja.webp', category: 'fondos-paneles', title: 'Panel Bob Esponja', desc: 'Decoración de fondo temática de Bob Esponja.' },
+  { id: 9, src: 'catalogo/caja de madera a medida.webp', category: 'mesas-candybar', title: 'Caja de Madera a Medida', desc: 'Cajón de madera resistente para candy bar y golosinas.' },
+  { id: 10, src: 'catalogo/estanteria bob esponja.webp', category: 'estanterias-exhibidores', title: 'Estantería Piña Bob Esponja', desc: 'Estantería exhibidora temática de la casa piña de Bob Esponja.' },
+  { id: 11, src: 'catalogo/estanterias y exhibidores (3).webp', category: 'estanterias-exhibidores', title: 'Exhibidor Escalonado', desc: 'Exhibidor en escalera de tres niveles para postres o souvenirs.' },
+  { id: 12, src: 'catalogo/estanterias y exhibidores.webp', category: 'estanterias-exhibidores', title: 'Estantería de Exhibición', desc: 'Mueble rústico con estantes para candy bar.' },
+  { id: 13, src: 'catalogo/fondos y paneles (2).webp', category: 'fondos-paneles', title: 'Paneles de Madera Rústicos', desc: 'Paredes decorativas modulares de madera.' },
+  { id: 14, src: 'catalogo/fondos y paneles (3).webp', category: 'fondos-paneles', title: 'Panel de Fondo Curvo', desc: 'Estructura modular curada para sesiones fotográficas y eventos.' },
+  { id: 15, src: 'catalogo/letras-luminosas (3).webp', category: 'letras-luminosas', title: 'Letras y Números Luminosos', desc: 'Deco de madera luminosa personalizada con lámparas cálidas.' },
+  { id: 16, src: 'catalogo/mueble-caja de madera.webp', category: 'mesas-candybar', title: 'Mueble Caja de Madera', desc: 'Mueble de madera tipo cajón de apoyo y exhibición.' },
+  { id: 17, src: 'catalogo/paneles de mariposa.webp', category: 'fondos-paneles', title: 'Paneles Mariposa', desc: 'Fondo calado con formas y siluetas de mariposas.' }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -56,10 +56,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.innerHTML = `
           <div class="blob-bg" style="background: ${blobColor}"></div>
-          <img src="${item.src}" alt="${item.title}" style="border-radius:16px; margin-bottom:16px; aspect-ratio:4/3; object-fit:cover; width:100%;">
+          <div class="card-img-wrapper">
+            <img src="${item.src}" alt="${item.title}" class="card-img">
+          </div>
           <h3>${item.title}</h3>
           <p>${item.desc}</p>
         `;
+
+        const img = card.querySelector('.card-img');
+        const wrapper = card.querySelector('.card-img-wrapper');
+
+        const onImageLoad = () => {
+          wrapper.classList.add('loaded');
+        };
+
+        if (img) {
+          img.addEventListener('load', onImageLoad);
+          if (img.complete) {
+            onImageLoad();
+          }
+        }
 
         card.addEventListener('click', () => {
           openLightbox(index);
@@ -96,11 +112,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // Lightbox Modal Logic
   const lightboxModal = document.getElementById('lightboxModal');
   const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxSpinner = document.getElementById('lightboxSpinner');
   const lightboxTitle = document.getElementById('lightboxTitle');
   const lightboxDesc = document.getElementById('lightboxDesc');
   const lightboxPrevBtn = document.querySelector('.lightbox-prev');
   const lightboxNextBtn = document.querySelector('.lightbox-next');
   const lightboxCloseBtn = document.querySelector('.lightbox-close');
+
+  if (lightboxImg) {
+    lightboxImg.addEventListener('load', () => {
+      lightboxImg.classList.add('loaded');
+      if (lightboxSpinner) {
+        lightboxSpinner.style.opacity = '0';
+        setTimeout(() => {
+          if (lightboxImg.classList.contains('loaded')) {
+            lightboxSpinner.style.display = 'none';
+          }
+        }, 250);
+      }
+    });
+  }
 
   function openLightbox(index) {
     if (!lightboxModal) return;
@@ -125,6 +156,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateLightboxContent() {
     const item = filteredItems[currentLightboxIndex];
     if (!item) return;
+
+    lightboxImg.classList.remove('loaded');
+    if (lightboxSpinner) {
+      lightboxSpinner.style.display = 'flex';
+      lightboxSpinner.style.opacity = '1';
+    }
 
     lightboxImg.src = item.src;
     lightboxImg.alt = item.title;

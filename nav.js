@@ -50,4 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* Inicialización de imágenes en cache o precargadas */
+  const staticCardImages = document.querySelectorAll('.card-img-wrapper img');
+  staticCardImages.forEach(img => {
+    if (img.complete || img.naturalWidth > 0) {
+      img.parentElement.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => {
+        img.parentElement.classList.add('loaded');
+      });
+    }
+  });
+
 });
