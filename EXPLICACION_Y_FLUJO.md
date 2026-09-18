@@ -9,7 +9,7 @@ Este documento describe la arquitectura, flujo de datos y el código utilizado p
 ```
 [ Celular / Equipo del Familiar ]
              │
-             ▼ 1. Selecciona foto + Datos en admin.html
+             ▼ 1. Selecciona foto + Datos en k9x2m7v4.html
   [ Compresión de Imagen ]  ── (Canvas JS redimensiona foto a max 1000px WebP/JPEG)
              │
              ▼ 2. Petición POST HTTPS
@@ -30,7 +30,7 @@ Las credenciales están integradas directamente en el código para que el famili
 
 ---
 
-### B. Código del Panel Administrador (`admin.js`)
+### B. Código del Panel Administrador (`k9x2m7v4.js`)
 
 #### 1. Normalización de URL y Conexión
 ```javascript
