@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de Administración | Atelier Eitner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="logos/favicon.ico">
+<link rel="stylesheet" href="proyectt.css">
+<style>
+  .admin-body {
+    background: var(--paper);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .admin-header {
+    background: #1c1a17;
+    color: var(--paper);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .admin-header img {
+    height: 38px;
+    filter: brightness(0) invert(1);
+  }
+  .admin-header a {
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.88rem;
+    opacity: 0.8;
+  }
+  .admin-header a:hover { opacity: 1; }
+
+  /* Login Lock Screen */
+  .admin-lock {
+    max-width: 420px;
+    margin: 80px auto;
+    background: #ffffff;
+    padding: 36px 28px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(58,50,38,0.08);
+    text-align: center;
+  }
+  .admin-lock h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: var(--charcoal);
+  }
+  .admin-lock p {
+    font-size: 0.9rem;
+    color: rgba(58,50,38,0.7);
+    margin-bottom: 24px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+    margin-bottom: 18px;
+  }
+  .form-group label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--charcoal);
+  }
+  .form-control {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: #faf8f5;
+    transition: border-color 0.2s ease;
+  }
+  .form-control:focus {
+    outline: none;
+    border-color: var(--sage-deep);
+    background: #ffffff;
+  }
+  .btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--sage-deep);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-submit:hover {
+    background: #465544;
+    transform: translateY(-2px);
+  }
+
+  /* Admin Content */
+  .admin-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: none;
+  }
+  .admin-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(58,50,38,0.06);
+    margin-bottom: 32px;
+  }
+  .admin-card h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    color: var(--charcoal);
+  }
+
+  /* Image Upload Zone */
+  .upload-box {
+    border: 2px dashed var(--sage);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    background: #fbf9f5;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    position: relative;
+  }
+  .upload-box:hover {
+    background: #f4efe6;
+  }
+  .upload-box input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+  .upload-preview {
+    max-height: 200px;
+    border-radius: 12px;
+    margin-top: 12px;
+    display: none;
+    object-fit: cover;
+  }
+
+  .alert-banner {
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    font-size: 0.9rem;
+    display: none;
+  }
+  .alert-success {
+    background: #e6f4ea;
+    color: #137333;
+    border: 1px solid #ceead6;
+  }
+  .alert-error {
+    background: #fce8e6;
+    color: #c5221f;
+    border: 1px solid #fad2cf;
+  }
+
+  /* Items Table/Grid */
+  .product-item-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .product-item-row img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  .product-item-info {
+    flex: 1;
+  }
+  .product-item-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.98rem;
+  }
+  .product-item-info p {
+    margin: 0;
+    font-size: 0.82rem;
+    color: rgba(58,50,38,0.7);
+  }
+  .btn-delete {
+    background: #fce8e6;
+    color: #c5221f;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .btn-delete:hover {
+    background: #fad2cf;
+  }
+
+  @media (max-width: 600px) {
+    .admin-header {
+      padding: 12px 16px;
+    }
+    .admin-header img {
+      height: 32px;
+    }
+    .admin-container {
+      padding: 0 12px;
+      margin: 20px auto;
+    }
+    .admin-card {
+      padding: 20px 16px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+    .admin-lock {
+      margin: 40px 14px;
+      padding: 28px 18px;
+    }
+    .product-item-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+    }
+    .product-item-row img {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+    }
+    .btn-delete {
+      width: 100%;
+      padding: 12px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Settings Accordion */
+  .settings-toggle {
+    background: transparent;
+    border: none;
+    color: var(--sage-deep);
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+</style>
+</head>
+<body class="admin-body">
+
+<header class="admin-header">
+  <img src="logos/LOGO.webp" alt="Atelier Eitner">
+  <a href="catalogo.html" target="_blank">Ver Catálogo ↗</a>
+</header>
+
+<!-- Pantalla de Bloqueo de Seguridad -->
+<div class="admin-lock" id="lockScreen">
+  <h2>Acceso Administración</h2>
+  <p>Ingresá la clave de acceso para administrar el catálogo.</p>
+  
+  <div class="alert-banner alert-error" id="lockError">Clave incorrecta. Intentá nuevamente.</div>
+
+  <form id="loginForm">
+    <div class="form-group">
+      <label for="adminPin">Clave de Acceso</label>
+      <input type="password" id="adminPin" class="form-control" placeholder="****" required autofocus>
+    </div>
+    <button type="submit" class="btn-submit">Entrar al Panel</button>
+  </form>
+</div>
+
+<!-- Contenido del Panel Admin -->
+<div class="admin-container" id="adminContent">
+  
+  <!-- Formulario Agregar Producto -->
+  <div class="admin-card">
+    <h2>✨ Publicar Nuevo Producto</h2>
+    <div class="alert-banner alert-success" id="addSuccess">¡Producto publicado exitosamente en el catálogo!</div>
+    <div class="alert-banner alert-error" id="addError">Hubo un error al guardar. Intentá nuevamente.</div>
+
+    <form id="addProductForm">
+      <div class="form-group">
+        <label>Foto del Producto</label>
+        <div class="upload-box" id="uploadBox">
+          <input type="file" id="itemImage" accept="image/*" required>
+          <div id="uploadPlaceholder">
+            <span style="font-size: 2rem;">📷</span>
+            <p style="margin: 6px 0 0 0; font-weight: 600;">Hacé clic o arrastrá una foto aquí</p>
+            <span style="font-size: 0.8rem; color: rgba(58,50,38,0.6);">Formatos JPG, PNG, WEBP</span>
+          </div>
+          <img id="imagePreview" class="upload-preview" alt="Vistas previa">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="itemTitle">Nombre / Título del Producto</label>
+        <input type="text" id="itemTitle" class="form-control" placeholder="Ej: Arco Floral con Luces" required>
+      </div>
+
+      <div class="form-group">
+        <label for="itemCategory">Categoría</label>
+        <select id="itemCategory" class="form-control" required>
+          <option value="mesas-candybar">Mesas y muebles</option>
+          <option value="estanterias-exhibidores">Estanterías y Exhibidores</option>
+          <option value="fondos-paneles">Fondos y Paneles</option>
+          <option value="letras-luminosas">Letras y Deco Luminosa</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="itemDesc">Descripción breve</label>
+        <textarea id="itemDesc" class="form-control" rows="3" placeholder="Ej: Estructura de madera con iluminación cálida incorporada." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit" id="saveBtn">✨ Publicar en el Catálogo</button>
+    </form>
+  </div>
+
+  <!-- Productos Actuales -->
+  <div class="admin-card">
+    <h2>📦 Productos en el Catálogo (<span id="adminCount">0</span>)</h2>
+    <div id="adminProductList">
+      <p style="color: rgba(58,50,38,0.6);">Cargando productos...</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

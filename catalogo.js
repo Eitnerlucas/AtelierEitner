@@ -18,23 +18,88 @@ const itemsCatalogo = [
   { id: 17, src: 'catalogo/paneles de mariposa.webp', category: 'fondos-paneles', title: 'Paneles Mariposa', desc: 'Fondo calado con formas y siluetas de mariposas.' }
 ];
 
+const STORAGE_KEY = 'atelier_custom_products';
+const DEFAULT_SUPABASE_URL = 'https://wqueudoaryvtuynfzdbv.supabase.co';
+const DEFAULT_SUPABASE_KEY = 'sb_publishable_jKM-u8kRlhX8GqomSwZscw_ImsSpKb0';
+
+function getSupabaseConfig() {
+  let rawUrl = (localStorage.getItem('atelier_supabase_url') || DEFAULT_SUPABASE_URL).trim();
+  let key = (localStorage.getItem('atelier_supabase_key') || DEFAULT_SUPABASE_KEY).trim();
+
+  if (!rawUrl || !key) return null;
+
+  rawUrl = rawUrl.replace(/\/+$/, '');
+  rawUrl = rawUrl.replace(/\/rest\/v1$/i, '');
+
+  return {
+    endpoint: `${rawUrl}/rest/v1/productos`,
+    key: key
+  };
+}
+
+function getAllCatalogItems() {
+  let customItems = [];
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      customItems = JSON.parse(stored);
+    }
+  } catch (e) {
+    console.warn('Error al leer productos de localStorage:', e);
+  }
+  return [...customItems, ...itemsCatalogo];
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const catalogGrid = document.getElementById('catalogGrid');
   const countLabel = document.getElementById('catalogCount');
   const emptyState = document.getElementById('catalogEmpty');
 
   let activeCategory = 'all';
-  let filteredItems = [...itemsCatalogo];
+  let allCatalogItems = getAllCatalogItems();
+  let filteredItems = [...allCatalogItems];
   let currentLightboxIndex = 0;
+
+  // Try fetching remote products from Supabase asynchronously if configured
+  function fetchRemoteProducts() {
+    const config = getSupabaseConfig();
+    if (config) {
+      fetch(`${config.endpoint}?select=*&order=id.desc`, {
+        headers: {
+          'apikey': config.key,
+          'Authorization': `Bearer ${config.key}`
+        }
+      })
+      .then(res => res.json())
+      .then(remoteItems => {
+        if (Array.isArray(remoteItems)) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(remoteItems));
+          allCatalogItems = getAllCatalogItems();
+          renderItems(activeCategory);
+        }
+      })
+      .catch(err => console.warn('Supabase offline or using local storage:', err));
+    }
+  }
+
+  // Listen for storage changes from Admin tab
+  window.addEventListener('storage', () => {
+    allCatalogItems = getAllCatalogItems();
+    renderItems(activeCategory);
+  });
+
+  fetchRemoteProducts();
 
   // Render items dynamically
   function renderItems(category = 'all') {
     if (!catalogGrid) return;
     activeCategory = category;
 
+    allCatalogItems = getAllCatalogItems();
+
     filteredItems = category === 'all'
-      ? itemsCatalogo
-      : itemsCatalogo.filter(item => item.category === category);
+      ? allCatalogItems
+      : allCatalogItems.filter(item => item.category === category);
 
     // Fade out transition
     catalogGrid.style.opacity = '0';
@@ -67,12 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const wrapper = card.querySelector('.card-img-wrapper');
 
         const onImageLoad = () => {
-          wrapper.classList.add('loaded');
+          if (wrapper) wrapper.classList.add('loaded');
         };
 
         if (img) {
-          img.addEventListener('load', onImageLoad);
-          if (img.complete) {
+          img.onload = onImageLoad;
+          img.onerror = onImageLoad;
+          if (img.complete || img.naturalWidth > 0 || (img.src && img.src.startsWith('data:'))) {
             onImageLoad();
           }
         }
