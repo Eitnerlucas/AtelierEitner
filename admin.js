@@ -1,7 +1,7 @@
 // Admin Panel Logic for Atelier Eitner
 document.addEventListener('DOMContentLoaded', () => {
   const PIN_KEY = 'atelier_admin_pin';
-  const DEFAULT_PIN = '1234';
+  const DEFAULT_PIN = '7419';
   const STORAGE_KEY = 'atelier_custom_products';
 
   const DEFAULT_SUPABASE_URL = 'https://wqueudoaryvtuynfzdbv.supabase.co';
@@ -68,10 +68,38 @@ document.addEventListener('DOMContentLoaded', () => {
     renderAdminProducts();
   }
 
-  // Handle Image Upload & Compression
-  itemImageInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
+  // Handle Image Upload & Compression (with HEIC / HEIF support)
+  itemImageInput.addEventListener('change', async (e) => {
+    let file = e.target.files[0];
     if (!file) return;
+
+    // Detect HEIC / HEIF format from iPhone
+    const isHeic = file.name.toLowerCase().endsWith('.heic') || 
+                   file.name.toLowerCase().endsWith('.heif') || 
+                   file.type === 'image/heic' || 
+                   file.type === 'image/heif';
+
+    if (isHeic && typeof heic2any !== 'undefined') {
+      try {
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Procesando imagen HEIC...';
+        uploadPlaceholder.innerHTML = '<span style="font-size: 1.5rem;">⏳</span><p style="margin:6px 0 0 0;font-weight:600;">Convertiendo foto de iPhone...</p>';
+
+        const convertedBlob = await heic2any({
+          blob: file,
+          toType: 'image/jpeg',
+          quality: 0.85
+        });
+
+        file = new File([Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob], file.name.replace(/\.(heic|heif)$/i, '.jpg'), { type: 'image/jpeg' });
+        saveBtn.disabled = false;
+        saveBtn.textContent = '✨ Publicar en el Catálogo';
+      } catch (err) {
+        console.warn('Error al convertir imagen HEIC:', err);
+        saveBtn.disabled = false;
+        saveBtn.textContent = '✨ Publicar en el Catálogo';
+      }
+    }
 
     const reader = new FileReader();
     reader.onload = (event) => {

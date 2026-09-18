@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/x-icon" href="logos/favicon.ico">
 <link rel="stylesheet" href="proyectt.css">
+<script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
 <style>
   .admin-body {
     background: var(--paper);
@@ -301,11 +302,11 @@
       <div class="form-group">
         <label>Foto del Producto</label>
         <div class="upload-box" id="uploadBox">
-          <input type="file" id="itemImage" accept="image/*" required>
+          <input type="file" id="itemImage" accept="image/*,.heic,.heif" required>
           <div id="uploadPlaceholder">
             <span style="font-size: 2rem;">📷</span>
             <p style="margin: 6px 0 0 0; font-weight: 600;">Hacé clic o arrastrá una foto aquí</p>
-            <span style="font-size: 0.8rem; color: rgba(58,50,38,0.6);">Formatos JPG, PNG, WEBP</span>
+            <span style="font-size: 0.8rem; color: rgba(58,50,38,0.6);">Formatos JPG, PNG, WEBP, HEIC (iPhone)</span>
           </div>
           <img id="imagePreview" class="upload-preview" alt="Vistas previa">
         </div>
